@@ -37,5 +37,4 @@ class PersonListAdapter(private val personList: List<String>) : RecyclerView.Ada
             snackbar.show()
         }
     }
-
 }

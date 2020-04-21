@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dissertation.Database.PersonDBHelper
 import com.example.dissertation.Database.PersonListAdapter
 import com.example.dissertation.Model.Person
+import com.example.dissertation.ViewPager.TournamentPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,13 +18,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var personDB : PersonDBHelper
     private var listPerson : List<String> = ArrayList()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<View>(R.id.recyclerview_person) as RecyclerView
-        val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
+        //val recyclerView = findViewById<View>(R.id.recyclerview_person) as RecyclerView
+        //val layoutManager = LinearLayoutManager(this)
+        //recyclerView.layoutManager = layoutManager
         personDB = PersonDBHelper(this)
         refreshData()
 
@@ -48,7 +50,9 @@ class MainActivity : AppCompatActivity() {
     private fun refreshData() {
         listPerson = personDB.allPerson()
         println(listPerson)
-        val mAdapter = PersonListAdapter(listPerson)
-        recyclerview_person.adapter = mAdapter
+        val mPagerAdapter = TournamentPagerAdapter(supportFragmentManager, listPerson)
+        pager.adapter = mPagerAdapter
+        //val mAdapter = PersonListAdapter(listPerson)
+        //recyclerview_person.adapter = mAdapter
     }
 }

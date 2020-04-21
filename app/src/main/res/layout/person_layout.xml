@@ -9,7 +9,7 @@
         android:id="@+id/person_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Unknown"
+        android:text="TBD"
         android:textSize="20dp" />
 
 </LinearLayout>

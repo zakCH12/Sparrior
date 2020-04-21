@@ -20,13 +20,7 @@
         android:layout_below="@id/edit_text_name"
         android:text="add"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_person"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/btn_add"
-        android:layout_marginTop="-2dp"
-        />
+
 
     <Button
         android:id="@+id/delete"
@@ -37,6 +31,14 @@
         android:layout_marginTop="-1dp"
         android:layout_toEndOf="@+id/btn_add"
         android:text="Clear" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_add"/>
+
+
 
 
 </RelativeLayout>

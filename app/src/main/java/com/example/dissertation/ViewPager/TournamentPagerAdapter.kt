@@ -3,27 +3,28 @@ package com.example.dissertation.ViewPager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.dissertation.Database.PersonListAdapter
 import com.example.dissertation.Fragment.TournamentColumnFragment
+import com.example.dissertation.Models.Fight
 
-class TournamentPagerAdapter(fm: FragmentManager, private val listPerson: List<String>) : FragmentStatePagerAdapter(fm) {
+class TournamentPagerAdapter(fm: FragmentManager, private val listFight: List<Fight>) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
+        println("Position is " + position)
         when (position) {
-            0 -> return TournamentColumnFragment(testList1)
-            1 -> return TournamentColumnFragment(testList2)
-            //2 -> return PersonListAdapter(listPerson)
-            //3 -> return PersonListAdapter(listPerson)
-            //4 -> return PersonListAdapter(listPerson)
+            0 -> return TournamentColumnFragment(listFight)
+            1 -> return TournamentColumnFragment(quarterfinals)
+            2 -> return TournamentColumnFragment(semifinals)
+            3 -> return TournamentColumnFragment(final)
         }
-        return TournamentColumnFragment(listPerson)
+        return TournamentColumnFragment(listFight)
     }
 
     override fun getCount(): Int {
-        return listPerson.size
+        return listFight.size
     }
 
-    val testList1: List<String> = listOf("RecyclerView 1", "RecyclerView 1")
-    val testList2: List<String> = listOf("RecyclerView 2", "RecyclerView 2", "RecyclerView 2")
+    val quarterfinals: List<Fight> = listOf(Fight("TBD","TBD"),Fight("TBD","TBD"),Fight("TBD","TBD"),Fight("TBD","TBD"))
+    val semifinals: List<Fight> = listOf(Fight("TBD","TBD"),Fight("TBD","TBD"))
+    val final: List<Fight> = listOf(Fight("TBD","TBD"))
 
 }

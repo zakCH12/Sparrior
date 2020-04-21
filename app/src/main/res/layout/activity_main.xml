@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <EditText
         android:id="@+id/edit_text_name"
@@ -23,7 +23,7 @@
 
 
     <Button
-        android:id="@+id/delete"
+        android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_text_name"
@@ -32,13 +32,22 @@
         android:layout_toEndOf="@+id/btn_add"
         android:text="Clear" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_name"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="-1dp"
+        android:layout_toEndOf="@+id/btn_delete"
+        android:text="Next" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_person"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/btn_add"/>
-
-
+        android:layout_below="@id/btn_add"
+        android:layout_marginTop="-2dp"/>
 
 
 </RelativeLayout>

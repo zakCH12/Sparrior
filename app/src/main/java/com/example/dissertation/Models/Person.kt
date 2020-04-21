@@ -1,4 +1,4 @@
-package com.example.dissertation.Model
+package com.example.dissertation.Models
 
 class Person {
     var name : String = "Unkown"

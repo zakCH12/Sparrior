@@ -1,6 +1,6 @@
-package com.example.dissertation
+package com.example.dissertation.Activities
 
-import android.database.sqlite.SQLiteDatabase
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,9 +8,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dissertation.Database.PersonDBHelper
-import com.example.dissertation.Database.PersonListAdapter
-import com.example.dissertation.Model.Person
-import com.example.dissertation.ViewPager.TournamentPagerAdapter
+import com.example.dissertation.Models.Person
+import com.example.dissertation.R
+import com.example.dissertation.RecyclerViews.PersonListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,9 +23,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //val recyclerView = findViewById<View>(R.id.recyclerview_person) as RecyclerView
-        //val layoutManager = LinearLayoutManager(this)
-        //recyclerView.layoutManager = layoutManager
+        val recyclerView = findViewById<View>(R.id.recyclerview_person) as RecyclerView
+        val layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
         personDB = PersonDBHelper(this)
         refreshData()
 
@@ -45,14 +45,30 @@ class MainActivity : AppCompatActivity() {
                 refreshData()
             }
         }
+
+        btn_delete.setOnClickListener {
+            personDB.deleteData()
+            val toast = Toast.makeText(applicationContext, "Data deleted", Toast.LENGTH_LONG)
+            toast.show()
+            refreshData()
+        }
+
+        btn_next.setOnClickListener {
+            if (listPerson.size != 16) {
+                val toast = Toast.makeText(applicationContext, "Need 16 participants", Toast.LENGTH_LONG)
+                toast.show()
+            } else {
+                val intent = Intent(this, TournamentActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
+
 
     private fun refreshData() {
         listPerson = personDB.allPerson()
         println(listPerson)
-        val mPagerAdapter = TournamentPagerAdapter(supportFragmentManager, listPerson)
-        pager.adapter = mPagerAdapter
-        //val mAdapter = PersonListAdapter(listPerson)
-        //recyclerview_person.adapter = mAdapter
+        val mAdapter = PersonListAdapter(listPerson)
+        recyclerview_person.adapter = mAdapter
     }
 }

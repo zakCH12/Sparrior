@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.example.dissertation.Model.Person
+import com.example.dissertation.Models.Person
 
 class PersonDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VER) {
     override fun onCreate(db: SQLiteDatabase?) {
@@ -42,6 +42,12 @@ class PersonDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.insert(TABLE_NAME, null, values)
         db.close()
         println("Person added to database")
+    }
+
+    fun deleteData() {
+
+        val db = this.writableDatabase
+        db!!.execSQL("DELETE FROM $TABLE_NAME")
     }
 
 

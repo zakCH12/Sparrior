@@ -7,14 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dissertation.Database.PersonListAdapter
+import com.example.dissertation.Models.Fight
+import com.example.dissertation.RecyclerViews.PersonListAdapter
 import com.example.dissertation.R
-import java.util.ArrayList
+import com.example.dissertation.RecyclerViews.FightListAdapter
 
-class TournamentColumnFragment(listPerson: List<String>) : Fragment() {
+class TournamentColumnFragment(listFight: List<Fight>) : Fragment() {
 
     lateinit var tournamentColumn: RecyclerView
-    var listPerson: List<String> = listPerson
+    var listFight: List<Fight> = listFight
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,8 +24,8 @@ class TournamentColumnFragment(listPerson: List<String>) : Fragment() {
     ): View {
 
         val v = inflater.inflate(R.layout.tournament_round, container, false)
-        tournamentColumn = v.findViewById(R.id.recyclerview_person)
-        val adapter = PersonListAdapter(listPerson)
+        tournamentColumn = v.findViewById(R.id.recyclerview_fight)
+        val adapter = FightListAdapter(listFight)
         val layoutManager = LinearLayoutManager(getActivity())
         tournamentColumn.layoutManager = layoutManager
         tournamentColumn.adapter = adapter

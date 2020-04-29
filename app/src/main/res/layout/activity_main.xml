@@ -13,14 +13,6 @@
         android:padding="8dp"
         android:hint="Name"/>
 
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_text_name"
-        android:text="add"/>
-
-
 
     <Button
         android:id="@+id/btn_delete"
@@ -47,7 +39,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/btn_add"
-        android:layout_marginTop="-2dp"/>
+        android:layout_marginTop="-2dp"
+        app:fastScrollHorizontalThumbDrawable="@android:drawable/ic_menu_call" />
 
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_name"
+        android:layout_marginTop="1dp"
+        android:text="add" />
+
+    <Button
+        android:id="@+id/btn_spar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text_name"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="-1dp"
+        android:layout_toEndOf="@+id/btn_next"
+        android:text="Spar" />
 
 </RelativeLayout>

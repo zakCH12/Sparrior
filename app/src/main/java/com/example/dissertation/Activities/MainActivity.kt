@@ -62,6 +62,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        btn_spar.setOnClickListener {
+            val intent = Intent(this, JudgeActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

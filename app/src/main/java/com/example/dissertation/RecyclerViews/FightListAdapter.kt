@@ -1,10 +1,14 @@
 package com.example.dissertation.RecyclerViews
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dissertation.Activities.JudgeActivity
 import com.example.dissertation.Models.Fight
 import com.example.dissertation.R
 import com.google.android.material.snackbar.Snackbar
@@ -15,6 +19,12 @@ class FightListAdapter (private val fightList: List<Fight>) : RecyclerView.Adapt
         var redFighter : TextView = layout.findViewById<View>(R.id.red_fighter) as TextView
         var blueFighter : TextView = layout.findViewById<View>(R.id.blue_fighter) as TextView
 
+        init {
+            layout.setOnClickListener {
+                val intent = Intent(layout.context, JudgeActivity::class.java)
+                layout.context.startActivity(intent)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FightViewHolder {
@@ -36,13 +46,13 @@ class FightListAdapter (private val fightList: List<Fight>) : RecyclerView.Adapt
 
         holder.redFighter.text = fightInfo.redName
         holder.blueFighter.text = fightInfo.blueName
-        holder.redFighter.setOnClickListener {v ->
+       /* holder.redFighter.setOnClickListener {v ->
             val snackbar = Snackbar.make(v, "You clicked on ${fightInfo.redName}", Snackbar.LENGTH_LONG)
             snackbar.show()
         }
         holder.blueFighter.setOnClickListener {v ->
             val snackbar = Snackbar.make(v, "You clicked on ${fightInfo.blueName}", Snackbar.LENGTH_LONG)
             snackbar.show()
-        }
+        }*/
     }
 }

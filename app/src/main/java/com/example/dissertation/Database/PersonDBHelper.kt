@@ -51,7 +51,7 @@ class PersonDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
 
-    fun allPerson() : List<String> {
+    fun allPerson() : ArrayList<String> {
         println("allPersonStarted")
         val listPerson = ArrayList<String>()
         val selectQuery = "SELECT * FROM $TABLE_NAME"

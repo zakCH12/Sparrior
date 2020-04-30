@@ -1,6 +1,10 @@
 package com.example.dissertation.Models
 
-class Fight(red: String, blue: String) {
+
+import java.io.Serializable
+
+
+class Fight(red: String, blue: String): Serializable{
 
     val redName = red
     val blueName = blue

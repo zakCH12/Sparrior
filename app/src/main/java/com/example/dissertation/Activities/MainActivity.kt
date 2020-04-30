@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dissertation.Database.PersonDBHelper
+import com.example.dissertation.Models.Fight
 import com.example.dissertation.Models.Person
 import com.example.dissertation.R
 import com.example.dissertation.RecyclerViews.PersonListAdapter
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var personDB : PersonDBHelper
-    private var listPerson : List<String> = ArrayList()
+    private var listPerson : ArrayList<String> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +60,9 @@ class MainActivity : AppCompatActivity() {
                 toast.show()
             } else {
                 val intent = Intent(this, TournamentActivity::class.java)
+                val bundle = Bundle()
+                bundle.putSerializable("bundleFight", pairPeople(listPerson))
+                intent.putExtras(bundle)
                 startActivity(intent)
             }
         }
@@ -75,5 +79,20 @@ class MainActivity : AppCompatActivity() {
         println(listPerson)
         val mAdapter = PersonListAdapter(listPerson)
         recyclerview_person.adapter = mAdapter
+    }
+
+    private fun pairPeople(listPerson: ArrayList<String>) : ArrayList<Fight> {
+        val listFight = ArrayList<Fight>()
+        for (item in listPerson.indices) {
+            var red: String
+            var blue: String
+            if (item % 2 == 0) {
+                red = listPerson[item]
+                blue = listPerson[item + 1]
+                val fight = Fight(red, blue)
+                listFight.add(fight)
+            }
+        }
+        return listFight
     }
 }

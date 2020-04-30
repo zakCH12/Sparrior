@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dissertation.R
 import com.google.android.material.snackbar.Snackbar
 
-class PersonListAdapter(private val personList: List<String>) : RecyclerView.Adapter<PersonListAdapter.PersonViewHolder>() {
+class PersonListAdapter(private val personList: ArrayList<String>) : RecyclerView.Adapter<PersonListAdapter.PersonViewHolder>() {
 
     class PersonViewHolder(layout : View) : RecyclerView.ViewHolder(layout) {
         var person : TextView = layout.findViewById<View>(R.id.person_name) as TextView

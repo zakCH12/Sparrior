@@ -18,8 +18,8 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:id="@+id/red_score"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#FF4C4C"
@@ -40,7 +40,8 @@
             android:textSize="24sp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/blue_score"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="#546EF8"

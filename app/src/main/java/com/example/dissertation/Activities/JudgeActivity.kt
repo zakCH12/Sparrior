@@ -1,10 +1,12 @@
 package com.example.dissertation.Activities
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.widget.TextView
 import android.widget.Toast
+import com.example.dissertation.Models.Fight
 import com.example.dissertation.R
 import kotlinx.android.synthetic.main.activity_judge.*
 
@@ -13,7 +15,10 @@ class JudgeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_judge)
-
+        context = this
+        val bundle: Bundle = intent.extras as Bundle
+        fightList = bundle.getSerializable("fightList") as ArrayList<Fight>
+        position = intent.getIntExtra("position", 0)
         btn_start_stop.text = "Start"
         plus1_red.setOnClickListener {
             if (!timerIsRunning) {
@@ -126,6 +131,9 @@ class JudgeActivity : AppCompatActivity() {
     var scoreBlue: Int = 0
     var timeLeftMs: Long = 10000 //2min
     var timerIsRunning: Boolean = false
+    var position: Int = 0
+    lateinit var fightList: ArrayList<Fight>
+    lateinit var context: Context
     lateinit var countDownTimer: CountDownTimer
 
 
@@ -149,6 +157,12 @@ class JudgeActivity : AppCompatActivity() {
         countDownTimer = object: CountDownTimer(timeLeftMs, 1000) {
             override fun onFinish() {
                 checkRound()
+                setScore()
+                val intent = Intent(context, TournamentActivity::class.java)
+                val bundle = Bundle()
+                bundle.putSerializable("bundleFight", fightList)
+                intent.putExtras(bundle)
+                startActivity(intent)
             }
 
             override fun onTick(millisUntilFinished: Long) {
@@ -186,18 +200,26 @@ class JudgeActivity : AppCompatActivity() {
     }
 
     private fun checkScore() {
-        if (scoreRed > scoreBlue) {
-            val toast = Toast.makeText(applicationContext, "Red is the winner", Toast.LENGTH_LONG)
-            toast.show()
-        } else if (scoreRed == scoreBlue) {
-            suddenDeath()
-        } else {
-            val toast = Toast.makeText(applicationContext, "Blue is the winner", Toast.LENGTH_LONG)
-            toast.show()
+        when {
+            scoreRed > scoreBlue -> {
+                val toast = Toast.makeText(applicationContext, "Red is the winner", Toast.LENGTH_LONG)
+                toast.show()
+            }
+            scoreRed == scoreBlue -> suddenDeath()
+            else -> {
+                val toast = Toast.makeText(applicationContext, "Blue is the winner", Toast.LENGTH_LONG)
+                toast.show()
+            }
         }
     }
 
     private fun suddenDeath() {
+
+    }
+
+    private fun setScore() {
+        fightList[position].redScore = scoreRed
+        fightList[position].blueScore = scoreBlue
 
     }
 }

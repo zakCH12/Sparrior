@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.JudgeActivity"
             android:screenOrientation="landscape"></activity>
-        <activity android:name=".Activities.TournamentActivity" />
+        <activity android:name=".Activities.TournamentActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -126,10 +126,10 @@ class JudgeActivity : AppCompatActivity() {
         }
     }
 
-    var round: Int = 3
+    var round: Int = 1
     var scoreRed: Int = 0
     var scoreBlue: Int = 0
-    var timeLeftMs: Long = 10000 //2min
+    var timeLeftMs: Long = 5000 //2min
     var timerIsRunning: Boolean = false
     var position: Int = 0
     lateinit var fightList: ArrayList<Fight>
@@ -156,13 +156,17 @@ class JudgeActivity : AppCompatActivity() {
         println("Timer started")
         countDownTimer = object: CountDownTimer(timeLeftMs, 1000) {
             override fun onFinish() {
-                checkRound()
-                setScore()
-                val intent = Intent(context, TournamentActivity::class.java)
-                val bundle = Bundle()
-                bundle.putSerializable("bundleFight", fightList)
-                intent.putExtras(bundle)
-                startActivity(intent)
+                if (checkRound()) {
+                    setScore()
+                    val intent = Intent(context, TournamentActivity::class.java)
+                    val bundle = Bundle()
+                    bundle.putSerializable("bundleFight", fightList)
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                } else {
+                    timeLeftMs = 5000
+                    stopTimer()
+                }
             }
 
             override fun onTick(millisUntilFinished: Long) {
@@ -192,11 +196,15 @@ class JudgeActivity : AppCompatActivity() {
         countdown_text.text = timeLeftText
     }
 
-    private fun checkRound() {
+    private fun checkRound(): Boolean {
         println("Round complete")
-        if(round<3) round++
-        else checkScore()
-        println(round)
+        return if(round<3) {
+            round++
+            false
+        } else {
+            checkScore()
+            true
+        }
     }
 
     private fun checkScore() {

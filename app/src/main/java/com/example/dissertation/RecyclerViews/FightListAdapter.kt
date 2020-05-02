@@ -41,12 +41,15 @@ class FightListAdapter (private val fightList: ArrayList<Fight>) : RecyclerView.
         holder.blueFighter.text = fightInfo.blueName
         holder.blueFighterScore.text = "" + fightInfo.blueScore
         holder.itemView.setOnClickListener {
-            val intent = Intent(holder.context, JudgeActivity::class.java)
-            val bundle = Bundle()
-            bundle.putSerializable("fightList", fightList)
-            intent.putExtra("position", position)
-            intent.putExtras(bundle)
-            holder.context.startActivity(intent)
+            if (fightInfo.clickable) {
+                fightInfo.clickable = false
+                val intent = Intent(holder.context, JudgeActivity::class.java)
+                val bundle = Bundle()
+                bundle.putSerializable("fightList", fightList)
+                intent.putExtra("position", position)
+                intent.putExtras(bundle)
+                holder.context.startActivity(intent)
+            }
         }
     }
 

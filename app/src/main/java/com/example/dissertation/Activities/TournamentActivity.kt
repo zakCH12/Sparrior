@@ -17,6 +17,9 @@ class TournamentActivity : AppCompatActivity() {
         val listFight: ArrayList<Fight> = bundle.getSerializable("bundleFight") as ArrayList<Fight>
 
         val mPagerAdapter = TournamentPagerAdapter(supportFragmentManager, listFight)
+        pager.clipToPadding = false
+        pager.setPadding(40,0,40,0)
+        pager.pageMargin = 20
         pager.adapter = mPagerAdapter
     }
 }

@@ -1,63 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.MainActivity">
-
-    <EditText
-        android:id="@+id/edit_text_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:hint="Name"/>
+    tools:context=".Activities.MainActivity"
+    android:id="@+id/main_activity"
+    android:background="@drawable/main_background_final">
 
 
     <Button
-        android:id="@+id/btn_delete"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_tournament"
+        android:layout_width="312dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_text_name"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="-1dp"
-        android:layout_toEndOf="@+id/btn_add"
-        android:text="Clear" />
-
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_text_name"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="-1dp"
-        android:layout_toEndOf="@+id/btn_delete"
-        android:text="Next" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_person"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/btn_add"
-        android:layout_marginTop="-2dp"
-        app:fastScrollHorizontalThumbDrawable="@android:drawable/ic_menu_call" />
-
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/edit_text_name"
-        android:layout_marginTop="1dp"
-        android:text="add" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="211dp"
+        android:background="@null" />
 
     <Button
         android:id="@+id/btn_spar"
-        android:layout_width="wrap_content"
+        android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/edit_text_name"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="21dp"
         android:layout_marginTop="-1dp"
-        android:layout_toEndOf="@+id/btn_next"
-        android:text="Spar" />
+        android:layout_marginEnd="51dp"
+        android:layout_marginBottom="118dp"
+        android:background="@null" />
+
 
 </RelativeLayout>

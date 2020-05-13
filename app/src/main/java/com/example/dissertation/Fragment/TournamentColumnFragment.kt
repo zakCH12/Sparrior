@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dissertation.Models.Fight
-import com.example.dissertation.RecyclerViews.PersonListAdapter
 import com.example.dissertation.R
 import com.example.dissertation.RecyclerViews.FightListAdapter
 

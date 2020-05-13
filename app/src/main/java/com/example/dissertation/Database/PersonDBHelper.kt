@@ -9,7 +9,8 @@ import com.example.dissertation.Models.Person
 class PersonDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VER) {
     override fun onCreate(db: SQLiteDatabase?) {
         //SQLite query
-        val CREATE_TABLE_QUERY =("CREATE TABLE $TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COL_NAME TEXT NOT NULL)")
+        val CREATE_TABLE_QUERY =("CREATE TABLE $TABLE_NAME ($COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "$COL_NAME TEXT NOT NULL)")
         db!!.execSQL(CREATE_TABLE_QUERY)
     }
 
@@ -30,7 +31,6 @@ class PersonDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private val COL_NAME = "name"
     }
 
-
     fun addPerson(person: Person) {
 
         val db = this.writableDatabase
@@ -49,7 +49,6 @@ class PersonDBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val db = this.writableDatabase
         db!!.execSQL("DELETE FROM $TABLE_NAME")
     }
-
 
     fun allPerson() : ArrayList<String> {
         println("allPersonStarted")

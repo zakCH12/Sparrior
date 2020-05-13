@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.JudgeActivity"
-    android:background="@drawable/tournament_judge">
+    android:background="@drawable/single_fight">
 
     <TextView
         android:id="@+id/score_red"
@@ -158,39 +158,16 @@
         android:background="@drawable/start" />
 
     <TextView
-    android:id="@+id/countdown_text"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentBottom="true"
-    android:layout_marginEnd="305dp"
-    android:layout_marginBottom="260dp"
-    android:fontFamily="@font/montserrat"
-    android:text="2:00"
-    android:textColor="#DCDCE2"
-    android:textSize="30sp" />
-
-    <TextView
-        android:id="@+id/red_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="86dp"
-        android:layout_marginBottom="348dp"
-        android:fontFamily="@font/raleway"
-        android:text="red_name"
-        android:textColor="#DCDCE2" />
-
-    <TextView
-        android:id="@+id/blue_name"
+        android:id="@+id/countdown_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="348dp"
-        android:fontFamily="@font/raleway"
-        android:text="blue_name"
-        android:textColor="#DCDCE2" />
+        android:layout_marginEnd="305dp"
+        android:layout_marginBottom="260dp"
+        android:fontFamily="@font/montserrat"
+        android:text="2:00"
+        android:textColor="#DCDCE2"
+        android:textSize="30sp" />
+
 </RelativeLayout>

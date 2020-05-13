@@ -16,7 +16,7 @@ class TournamentPagerAdapter(fm: FragmentManager, private val listFight: ArrayLi
             2 -> return TournamentColumnFragment(semifinals)
             3 -> return TournamentColumnFragment(final)
         }
-        return TournamentColumnFragment(listFight)
+        return TournamentColumnFragment(final)
     }
 
     override fun getCount(): Int {
@@ -58,5 +58,4 @@ class TournamentPagerAdapter(fm: FragmentManager, private val listFight: ArrayLi
     private val quarterfinals: ArrayList<Fight> = makeNextRound(listFight)
     private val semifinals: ArrayList<Fight> = makeNextRound(quarterfinals)
     private val final: ArrayList<Fight> = makeNextRound(semifinals)
-
 }

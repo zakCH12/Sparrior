@@ -10,31 +10,38 @@ import android.widget.Toast
 import com.example.dissertation.Models.Fight
 import com.example.dissertation.R
 import kotlinx.android.synthetic.main.activity_judge.*
+import kotlinx.android.synthetic.main.activity_judge.btn_start_stop
+import kotlinx.android.synthetic.main.activity_judge.countdown_text
+import kotlinx.android.synthetic.main.activity_judge.minus1_blue
+import kotlinx.android.synthetic.main.activity_judge.minus1_red
+import kotlinx.android.synthetic.main.activity_judge.plus1_blue
+import kotlinx.android.synthetic.main.activity_judge.plus1_red
+import kotlinx.android.synthetic.main.activity_judge.plus2_blue
+import kotlinx.android.synthetic.main.activity_judge.plus2_red
+import kotlinx.android.synthetic.main.activity_judge.plus3_blue
+import kotlinx.android.synthetic.main.activity_judge.plus3_red
+import kotlinx.android.synthetic.main.activity_judge.plus4_blue
+import kotlinx.android.synthetic.main.activity_judge.plus4_red
+import kotlinx.android.synthetic.main.activity_judge.score_blue
+import kotlinx.android.synthetic.main.activity_judge.score_red
+import kotlinx.android.synthetic.main.activity_judge.txt_round
+import kotlinx.android.synthetic.main.activity_spar.*
 
-class JudgeActivity : AppCompatActivity() {
+class SparActivity : AppCompatActivity() {
 
     private var round = 2
     private var scoreRed = 0
     private var scoreBlue = 0
     private var timeLeftMs: Long = 5000 //2min
     private var timerIsRunning = false
-    private var position = 0
-    private var isTournament = true
-    lateinit var fightList: ArrayList<Fight>
     lateinit var context: Context
     lateinit var countDownTimer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_judge)
+        setContentView(R.layout.activity_spar)
         context = this
-        val bundle: Bundle = intent.extras as Bundle
-        fightList = bundle.getSerializable("fightList") as ArrayList<Fight>
-        position = intent.getIntExtra("position", 0)
-
         btn_start_stop.setBackgroundResource(R.drawable.start)
-        red_name.text = fightList[position].redName
-        blue_name.text = fightList[position].blueName
 
         plus1_red.setOnClickListener {
             if (!timerIsRunning) {
@@ -161,15 +168,7 @@ class JudgeActivity : AppCompatActivity() {
         countDownTimer = object: CountDownTimer(timeLeftMs, 1000) {
             override fun onFinish() {
                 if (checkRound()) {
-                    if (!isTournament) {
-                    } else {
-                        setScore()
-                        val intent = Intent(context, TournamentActivity::class.java)
-                        val bundle = Bundle()
-                        bundle.putSerializable("bundleFight", fightList)
-                        intent.putExtras(bundle)
-                        startActivity(intent)
-                    }
+                    println("finished")
                 } else {
                     timeLeftMs = 5000
                     stopTimer()
@@ -233,10 +232,5 @@ class JudgeActivity : AppCompatActivity() {
 
     private fun suddenDeath() {
 
-    }
-
-    private fun setScore() {
-        fightList[position].redScore = scoreRed
-        fightList[position].blueScore = scoreBlue
     }
 }

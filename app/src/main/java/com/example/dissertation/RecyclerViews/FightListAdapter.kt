@@ -10,15 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dissertation.Activities.JudgeActivity
 import com.example.dissertation.Models.Fight
 import com.example.dissertation.R
+import kotlinx.android.synthetic.main.activity_tournament.*
 
 class FightListAdapter (private val fightList: ArrayList<Fight>) : RecyclerView.Adapter<FightListAdapter.FightViewHolder>() {
 
     class FightViewHolder(layout : View) : RecyclerView.ViewHolder(layout) {
+
         var redFighter : TextView = layout.findViewById<View>(R.id.red_fighter) as TextView
         var blueFighter : TextView = layout.findViewById<View>(R.id.blue_fighter) as TextView
         var redFighterScore : TextView = layout.findViewById<View>(R.id.red_score) as TextView
         var blueFighterScore : TextView = layout.findViewById<View>(R.id.blue_score) as TextView
         val context = layout.context
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FightViewHolder {
@@ -47,6 +50,7 @@ class FightListAdapter (private val fightList: ArrayList<Fight>) : RecyclerView.
                 val bundle = Bundle()
                 bundle.putSerializable("fightList", fightList)
                 intent.putExtra("position", position)
+                intent.putExtra("tournament", true)
                 intent.putExtras(bundle)
                 holder.context.startActivity(intent)
             }

@@ -16,83 +16,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var personDB : PersonDBHelper
-    private var listPerson : ArrayList<String> = ArrayList()
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView = findViewById<View>(R.id.recyclerview_person) as RecyclerView
-        val layoutManager = LinearLayoutManager(this)
-        recyclerView.layoutManager = layoutManager
-        personDB = PersonDBHelper(this)
-        refreshData()
-
-
-        btn_add.setOnClickListener {
-
-            val name: String = edit_text_name.text.toString()
-            if (name.trim().isEmpty()) {
-                println("Name is empty")
-                val toast = Toast.makeText(applicationContext, "Please enter name", Toast.LENGTH_LONG)
-                toast.show()
-            } else {
-                println("Button pressed")
-                val person = Person(name)
-                personDB.addPerson(person)
-                edit_text_name.text.clear()
-                refreshData()
-            }
-        }
-
-        btn_delete.setOnClickListener {
-            personDB.deleteData()
-            val toast = Toast.makeText(applicationContext, "Data deleted", Toast.LENGTH_LONG)
-            toast.show()
-            refreshData()
-        }
-
-        btn_next.setOnClickListener {
-            if (listPerson.size != 16) {
-                val toast = Toast.makeText(applicationContext, "Need 16 participants", Toast.LENGTH_LONG)
-                toast.show()
-            } else {
-                val intent = Intent(this, TournamentActivity::class.java)
-                val bundle = Bundle()
-                bundle.putSerializable("bundleFight", pairPeople(listPerson))
-                intent.putExtras(bundle)
-                startActivity(intent)
-            }
-        }
-
-        btn_spar.setOnClickListener {
-            val intent = Intent(this, JudgeActivity::class.java)
+        btn_tournament.setOnClickListener {
+            val intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
         }
-    }
-
-
-    private fun refreshData() {
-        listPerson = personDB.allPerson()
-        println(listPerson)
-        val mAdapter = PersonListAdapter(listPerson)
-        recyclerview_person.adapter = mAdapter
-    }
-
-    private fun pairPeople(listPerson: ArrayList<String>) : ArrayList<Fight> {
-        val listFight = ArrayList<Fight>()
-        for (item in listPerson.indices) {
-            var red: String
-            var blue: String
-            if (item % 2 == 0) {
-                red = listPerson[item]
-                blue = listPerson[item + 1]
-                val fight = Fight(red, blue)
-                listFight.add(fight)
-            }
+        btn_spar.setOnClickListener {
+            val intent = Intent(this, SparActivity::class.java)
+            startActivity(intent)
         }
-        return listFight
     }
 }

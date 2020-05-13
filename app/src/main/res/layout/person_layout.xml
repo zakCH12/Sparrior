@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
@@ -9,7 +10,21 @@
         android:id="@+id/person_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/raleway"
         android:text="TBD"
         android:textSize="20dp" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="380dp"
+        android:layout_height="2dp"
+        android:layout_below="@+id/person_name"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/line" />
+
+</RelativeLayout>

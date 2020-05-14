@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dissertation.Activities.JudgeActivity
 import com.example.dissertation.Models.Fight
 import com.example.dissertation.R
-import kotlinx.android.synthetic.main.activity_tournament.*
 
 class FightListAdapter (private val fightList: ArrayList<Fight>) : RecyclerView.Adapter<FightListAdapter.FightViewHolder>() {
 

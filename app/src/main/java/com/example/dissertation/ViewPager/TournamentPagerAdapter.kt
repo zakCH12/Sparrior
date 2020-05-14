@@ -6,7 +6,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.dissertation.Fragment.TournamentColumnFragment
 import com.example.dissertation.Models.Fight
 
-class TournamentPagerAdapter(fm: FragmentManager, private val listFight: ArrayList<Fight>) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class TournamentPagerAdapter(fm: FragmentManager, private val listFight: ArrayList<Fight>) :
+    FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getItem(position: Int): Fragment {
         println("Position is $position")

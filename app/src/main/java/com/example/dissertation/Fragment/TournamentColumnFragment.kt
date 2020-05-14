@@ -29,6 +29,4 @@ class TournamentColumnFragment(var listFight: ArrayList<Fight>) : Fragment() {
         tournamentColumn.adapter = adapter
         return v
     }
-
-
 }

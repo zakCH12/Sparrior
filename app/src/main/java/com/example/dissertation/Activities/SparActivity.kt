@@ -29,10 +29,10 @@ import kotlinx.android.synthetic.main.activity_spar.*
 
 class SparActivity : AppCompatActivity() {
 
-    private var round = 2
+    private var round = 0
     private var scoreRed = 0
     private var scoreBlue = 0
-    private var timeLeftMs: Long = 5000 //2min
+    private var timeLeftMs: Long = 120000 //2min
     private var timerIsRunning = false
     lateinit var context: Context
     lateinit var countDownTimer: CountDownTimer
